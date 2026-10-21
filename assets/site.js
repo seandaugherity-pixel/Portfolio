@@ -1,15 +1,12 @@
-// Page counter + previous/next navigation for the portfolio viewer.
+// Left/right arrow keys step between pages; anchor jumps clear the sticky header.
 const header = document.getElementById("site-header");
 const pages = [...document.querySelectorAll(".viewer .page")];
-const pageNum = document.getElementById("page-num");
 let current = 0;
 
 const observer = new IntersectionObserver(
   (entries) => {
     for (const entry of entries) {
-      if (!entry.isIntersecting) continue;
-      current = pages.indexOf(entry.target);
-      pageNum.textContent = current + 1;
+      if (entry.isIntersecting) current = pages.indexOf(entry.target);
     }
   },
   // A page counts as "current" when it crosses the upper-middle of the viewport.
@@ -17,7 +14,6 @@ const observer = new IntersectionObserver(
 );
 pages.forEach((page) => observer.observe(page));
 
-// Keep jump targets (contents links, prev/next) clear of the sticky header.
 const syncHeaderHeight = () =>
   document.documentElement.style.setProperty("--header-h", `${header.offsetHeight}px`);
 syncHeaderHeight();
@@ -27,10 +23,6 @@ function goTo(index) {
   const target = pages[Math.max(0, Math.min(pages.length - 1, index))];
   target.scrollIntoView({ block: "start" });
 }
-
-document.querySelectorAll("[data-step]").forEach((button) => {
-  button.addEventListener("click", () => goTo(current + Number(button.dataset.step)));
-});
 
 document.addEventListener("keydown", (event) => {
   if (event.altKey || event.ctrlKey || event.metaKey) return;

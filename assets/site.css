@@ -188,19 +188,48 @@ body {
 .hot:hover { background: rgba(17, 17, 17, 0.08); }
 .hot:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-/* Faint underline so contact links read as links */
-.hot.u::after {
-  content: "";
+/* ---------- Last page: contact, social and resume links ---------- */
+
+.about-links {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.3;
-  transition: opacity 0.15s ease;
+  left: 4.41%;
+  top: 11%;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2.6cqw;
 }
-.hot.u:hover::after { opacity: 0.9; }
+.link-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.55cqw;
+}
+.link-group h3 {
+  margin: 0 0 0.2cqw;
+  font-size: 0.95cqw;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.link-group a {
+  position: relative;
+  font-size: 1.55cqw;
+  line-height: 1.25;
+  color: var(--ink);
+  text-decoration: none;
+  text-underline-offset: 0.22em;
+  text-decoration-thickness: 1px;
+}
+.link-group a:hover { text-decoration-line: underline; }
+.link-group a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.link-group .arrow {
+  display: inline-block;
+  color: var(--muted);
+  transition: transform 0.15s ease, color 0.15s ease;
+}
+.link-group a:hover .arrow { color: var(--ink); transform: translate(2px, -2px); }
 
 /* ---------- Resume hover preview (the card itself is clickable) ---------- */
 
@@ -235,57 +264,6 @@ a:focus-visible > .peek { opacity: 1; visibility: visible; transform: none; }
   color: var(--ink);
   letter-spacing: 0.02em;
 }
-
-/* ---------- Floating toolbar ---------- */
-
-.toolbar {
-  position: fixed;
-  left: 50%;
-  bottom: 16px;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  padding: 5px;
-  background: var(--glass);
-  color: var(--ink);
-  border: 1px solid var(--glass-edge);
-  border-radius: 999px;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05), 0 8px 28px rgba(0, 0, 0, 0.14);
-  backdrop-filter: blur(20px) saturate(170%);
-  -webkit-backdrop-filter: blur(20px) saturate(170%);
-  font-size: 13px;
-  white-space: nowrap;
-  z-index: 20;
-}
-.toolbar a,
-.toolbar button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  height: 34px;
-  padding: 0 12px;
-  border: 0;
-  border-radius: 999px;
-  background: none;
-  color: inherit;
-  font: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-.toolbar a:hover,
-.toolbar button:hover { background: rgba(0, 0, 0, 0.06); }
-.toolbar a:focus-visible,
-.toolbar button:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
-.toolbar button { padding: 0 8px; }
-.toolbar svg { width: 16px; height: 16px; }
-.tb-count {
-  min-width: 52px;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-  color: var(--muted);
-}
-.tb-sep { width: 1px; height: 20px; margin: 0 4px; background: rgba(0, 0, 0, 0.12); }
 
 /* ---------- Phones: titles and contents move out of the page art ---------- */
 
@@ -328,11 +306,16 @@ a:focus-visible > .peek { opacity: 1; visibility: visible; transform: none; }
     white-space: normal;
   }
 
+  .about-links {
+    position: static;
+    gap: 22px;
+    padding: 4px 16px 20px;
+  }
+  .link-group { gap: 8px; }
+  .link-group h3 { font-size: 11px; margin-bottom: 0; }
+  .link-group a { font-size: 17px; }
+
   .peek { display: none; }
-  .toolbar .tb-step, .toolbar .tb-sep { display: none; }
-  .toolbar { font-size: 12px; }
-  .toolbar a { padding: 0 10px; }
-  .tb-count { min-width: 44px; }
 }
 
 /* ---------- Resume page ---------- */
