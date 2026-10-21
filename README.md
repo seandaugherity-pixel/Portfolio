@@ -1,8 +1,6 @@
 # Sean M. Daugherity — Architecture Portfolio
 
-A static website for Sean M. Daugherity's architecture portfolio: six semester studio projects, a resume page, and contact links. It is plain HTML, CSS and a little JavaScript, with no build step, so it can be hosted anywhere that serves static files (GitHub Pages included).
-
-**Live site:** https://seandaugherity-pixel.github.io/Portfolio/ (once GitHub Pages is turned on; see [Publishing](#publishing))
+A static website for Sean M. Daugherity's architecture portfolio: six semester studio projects, a resume page, and contact links. It is plain HTML, CSS and a little JavaScript with no build step, and it is hosted on Vercel (see [Publishing](#publishing)).
 
 ## What's on the site
 
@@ -38,7 +36,6 @@ assets/
   resume/resume-0N.webp     Resume page images
   Sean-Daugherity-Portfolio.pdf   Portfolio PDF offered for download
   Sean-Daugherity-Resume.pdf      Resume PDF offered for download
-.nojekyll                   Tells GitHub Pages to serve the files as-is
 ```
 
 Page 2, the table of contents, is built entirely in HTML, so there is no `page-02.webp`.
@@ -63,8 +60,10 @@ Then open http://localhost:8000.
 
 ## Publishing
 
-1. On GitHub, open the repository's **Settings → Pages**.
-2. Under **Build and deployment**, set **Source** to *Deploy from a branch*.
-3. Choose the `main` branch and the `/ (root)` folder, then **Save**.
+The site deploys to [Vercel](https://vercel.com) as a static site. No configuration file is needed.
 
-After a minute or so the site is live at https://seandaugherity-pixel.github.io/Portfolio/. Every push to `main` updates it.
+1. In Vercel, choose **Add New → Project** and import this GitHub repository.
+2. Set **Framework Preset** to *Other*. Leave **Build Command** and **Output Directory** empty, and keep **Root Directory** as the repository root.
+3. Click **Deploy**.
+
+Vercel gives the site a `*.vercel.app` address; a custom domain can be added under the project's **Settings → Domains**. Every push to `main` deploys automatically, and pushes to other branches get their own preview URLs.
