@@ -44,28 +44,19 @@ body {
 .contact {
   display: flex;
   align-items: center;
-  gap: 26px;
-  font-size: 14px;
+  gap: 28px;
+  font-size: 15px;
 }
 .contact a {
   position: relative;
   padding: 6px 0;
-  color: var(--muted);
+  color: #222;
+  font-weight: 600;
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, opacity 0.15s ease;
 }
-.contact a:hover { color: var(--ink); }
+.contact a:hover { color: #000; opacity: 0.65; }
 .contact a:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
-.contact .resume-link { color: var(--ink); font-weight: 500; }
-.contact .resume-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 3px;
-  height: 1px;
-  background: currentColor;
-}
 .contact .short { display: none; }
 
 .brand {
@@ -129,10 +120,14 @@ body {
 /* Project write-ups, moved from the inner pages into the cover page's white space */
 .page-head.has-text { max-width: 60%; }
 .project-text {
-  margin-top: 2.4cqw;
+  margin-top: 2cqw;
+  padding: 1.8cqw 2.1cqw;
+  border: 1px solid #232021;
+  background: #fbfbfa;
   columns: 2;
   column-gap: 2.8cqw;
-  font-size: 1.05cqw;
+  column-rule: 1px solid #e3e3e0;
+  font-size: 1cqw;
   line-height: 1.55;
   color: #2b2b2b;
   orphans: 2;
@@ -308,6 +303,7 @@ a:focus-visible > .peek { opacity: 1; visibility: visible; transform: none; }
   .project-text {
     columns: 1;
     margin-top: 14px;
+    padding: 16px;
     font-size: 14px;
     line-height: 1.55;
   }
