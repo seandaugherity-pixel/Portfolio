@@ -1,4 +1,5 @@
 // Page counter + previous/next navigation for the portfolio viewer.
+const header = document.getElementById("site-header");
 const pages = [...document.querySelectorAll(".viewer .page")];
 const pageNum = document.getElementById("page-num");
 let current = 0;
@@ -15,6 +16,12 @@ const observer = new IntersectionObserver(
   { rootMargin: "-40% 0px -55% 0px" }
 );
 pages.forEach((page) => observer.observe(page));
+
+// Keep jump targets (contents links, prev/next) clear of the sticky header.
+const syncHeaderHeight = () =>
+  document.documentElement.style.setProperty("--header-h", `${header.offsetHeight}px`);
+syncHeaderHeight();
+window.addEventListener("resize", syncHeaderHeight);
 
 function goTo(index) {
   const target = pages[Math.max(0, Math.min(pages.length - 1, index))];
