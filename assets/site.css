@@ -77,6 +77,27 @@ body {
   font-size: clamp(12px, 0.95vw, 14px);
 }
 
+/* On the portfolio the name starts on the cover and slides into the header once you scroll past it */
+.site-header .brand { transition: opacity 0.3s ease, transform 0.3s ease; }
+.site-header.brand-hidden .brand {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none;
+}
+
+.cover-brand {
+  position: absolute;
+  right: 4.41%;
+  top: 18%;
+  z-index: 1;
+  margin: 0;
+  text-align: right;
+  font-weight: 400;
+  line-height: 1.15;
+}
+.cover-brand .brand-name { font-size: 2cqw; font-weight: 600; letter-spacing: 0.01em; }
+.cover-brand .brand-sub { margin-top: 0.5em; font-size: 1.1cqw; }
+
 /* ---------- Pages ---------- */
 
 .page {
@@ -285,6 +306,9 @@ a:focus-visible > .peek { opacity: 1; visibility: visible; transform: none; }
     padding: 10px 16px;
   }
   .brand { text-align: left; }
+  /* Phones keep the name in the header; the cover is too narrow for it */
+  .site-header.brand-hidden .brand { opacity: 1; transform: none; pointer-events: auto; }
+  .cover-brand { display: none; }
   .contact { gap: 18px; font-size: 13px; }
   .contact .full { display: none; }
   .contact .short { display: inline; }

@@ -19,6 +19,16 @@ const syncHeaderHeight = () =>
 syncHeaderHeight();
 window.addEventListener("resize", syncHeaderHeight);
 
+// Show the name in the header once the cover's own name has scrolled up under it.
+const coverBrand = document.getElementById("cover-brand");
+if (coverBrand) {
+  const brandObserver = new IntersectionObserver(
+    ([entry]) => header.classList.toggle("brand-hidden", entry.isIntersecting),
+    { rootMargin: `-${header.offsetHeight}px 0px 0px 0px` }
+  );
+  brandObserver.observe(coverBrand);
+}
+
 function goTo(index) {
   const target = pages[Math.max(0, Math.min(pages.length - 1, index))];
   target.scrollIntoView({ block: "start" });

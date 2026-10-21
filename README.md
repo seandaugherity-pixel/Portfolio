@@ -4,8 +4,8 @@ A static website for Sean M. Daugherity's architecture portfolio: six semester s
 
 ## What's on the site
 
-- **Glass header** that stays at the top of every page: Resume, phone and email on the left; name and "Architecture Portfolio - selected works" on the right. Hovering Resume shows a preview of the resume.
-- **Cover** with the Childhood Home recollection sketch.
+- **Glass header** that stays at the top of every page: Resume, phone and email on the left. Hovering Resume shows a preview of the resume. The name and "Architecture Portfolio - selected works" fade into the header's right side once you scroll past the cover.
+- **Cover** with an atrium sketch on the left and the name on the right.
 - **Table of contents.** Each project's artwork fills its box; click a box to jump to that project.
 - **Six projects.** Each one opens with a cover page showing the title, studio and location, and a framed write-up about the project. The pages after it show the drawings, renders and models, each in a framed box with its caption.
 
@@ -30,7 +30,8 @@ index.html                  The portfolio (all 21 pages)
 resume.html                 Resume page
 assets/
   site.css                  All styles (header, pages, contents, write-ups, phone layout)
-  site.js                   Arrow-key navigation; keeps jump links clear of the header
+  site.js                   Arrow-key navigation, header name on scroll, jump links clear of the header
+  og-image.jpg              Link preview image (name above the cover sketch), 1200 × 630
   pages/page-NN.webp        Page artwork, one image per portfolio page
   toc/*.webp                Contents box artwork, one per project
   resume/resume-0N.webp     Resume page images
@@ -46,6 +47,7 @@ Page 2, the table of contents, is built entirely in HTML, so there is no `page-0
 - **Links:** LinkedIn appears in `index.html` (last page) and `resume.html`. The email and phone appear in the header and on the last page.
 - **Artwork** comes from the page images in `assets/pages/`. To change a drawing, replace the matching `page-NN.webp` with an image of the same size (2400 × 1553 px) so the layout doesn't shift.
 - **Resume:** replace `assets/Sean-Daugherity-Resume.pdf` and the two images in `assets/resume/`.
+- **Link preview:** when the site's link is shared (iMessage, LinkedIn, Slack and so on), the card shows `assets/og-image.jpg`. The `og:image` and `twitter:image` tags in `index.html` and `resume.html` should hold the full address of that image on the live domain (for example `https://your-domain/assets/og-image.jpg`), because some apps ignore relative paths.
 - **Download PDF:** `assets/Sean-Daugherity-Portfolio.pdf` is the original print portfolio. It doesn't include the website's later edits (moved write-ups, spelling fixes, reframed pages).
 
 ## Previewing locally
