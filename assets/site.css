@@ -376,3 +376,30 @@ a:focus-visible > .peek { opacity: 1; visibility: visible; transform: none; }
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 .doc .page + .page { border-top: 0; }
+
+/* Enlarge the cover artwork within an even border around the slide. */
+#cover .sheet {
+  aspect-ratio: 2400 / 1553;
+  overflow: hidden;
+}
+#cover .sheet > img {
+  position: absolute;
+  left: -4.7%;
+  top: -19.7%;
+  width: 152%;
+  height: 139.4%;
+  max-width: none;
+}
+
+/* Half-opacity frame outlines for portfolio pages 1–18. */
+.viewer > .page:nth-child(-n + 18) .project-text,
+.viewer > .page:nth-child(-n + 18) .toc-art {
+  border-color: rgba(35, 32, 33, 0.5);
+}
+.frame-opacity-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
