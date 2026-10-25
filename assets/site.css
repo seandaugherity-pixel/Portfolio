@@ -403,3 +403,201 @@ a:focus-visible > .peek { opacity: 1; visibility: visible; transform: none; }
   height: 100%;
   pointer-events: none;
 }
+
+/* Preserve page 01's image rectangle and crop from the left. */
+#common-horizons .sheet > .project-cover-replacement {
+  position: absolute;
+  left: 66.08%;
+  top: 0;
+  width: 29.51%;
+  height: 93.34%;
+  object-fit: cover;
+  object-position: right center;
+}
+
+/* Keep the cleared page 01 write-up box at its original desktop size. */
+#common-horizons .project-text:empty {
+  min-height: 39.4cqw;
+}
+@media (max-width: 700px) {
+  #common-horizons .project-text:empty { min-height: 180px; }
+}
+#common-horizons .page-head.has-text { width: 60%; }
+@media (max-width: 700px) {
+  #common-horizons .page-head.has-text { width: auto; }
+}
+
+/* Empty project pages retain the portfolio sheet size and page numbering. */
+.blank-project-page { aspect-ratio: 2400 / 1553; }
+.project-page-number {
+  position: absolute;
+  right: 4.41%;
+  bottom: 1.8%;
+  font-size: 0.8cqw;
+  color: #232021;
+}
+
+/* Match printed page 17's 18 pt title and 9.5 pt subtitle on a 1224 pt sheet. */
+.standardized-project .page-head h2 { font-size: 1.4706cqw; }
+.standardized-project .page-head > p { font-size: 0.7761cqw; margin-top: 0.3em; }
+.standardized-project .standardized-art-heading {
+  max-width: none;
+  width: 91.18%;
+  min-height: 3.5cqw;
+  background: white;
+}
+.full-page-perspective {
+  position: absolute;
+  left: 4.41%;
+  right: 4.41%;
+  top: 9%;
+  bottom: 4.7%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+.full-page-perspective img {
+  display: block;
+  width: 100%;
+  min-height: 0;
+  flex: 1;
+  object-fit: cover;
+}
+.full-page-perspective figcaption {
+  text-align: right;
+  margin-top: 0.45cqw;
+  font-size: 0.65cqw;
+  color: #58595b;
+}
+@media (max-width: 700px) {
+  .standardized-project .page-head h2 { font-size: 18px; }
+  .standardized-project .page-head > p { font-size: 12px; }
+  .standardized-project .standardized-art-heading { width: 100%; min-height: 0; }
+  #page-04 .full-page-perspective { position: relative; inset: auto; margin: 0 16px 24px; }
+  #page-04 .full-page-perspective img { flex: none; height: auto; }
+  .full-page-perspective figcaption { font-size: 11px; }
+}
+@media (max-width: 700px) {
+  .standardized-art-heading + .sheet > img { clip-path: inset(7% 0 0); }
+}
+
+/* Hide headings embedded in the artwork beneath the live page headings. */
+.standardized-art-heading + .sheet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7%;
+  background: #fff;
+  z-index: 1;
+  pointer-events: none;
+}
+.standardized-project .standardized-art-heading { z-index: 2; }
+
+/* Consistent artwork margins: move framed compositions up and out together. */
+.expanded-framed-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+@media (max-width: 700px) {
+  .standardized-art-heading + .sheet { margin-top: -3cqw; }
+}
+
+/* Keep complete heading text above artwork masks at every viewport size. */
+.page-head { z-index: 3; }
+.page-head > p {
+  height: auto;
+  max-height: none;
+  overflow: visible;
+  white-space: normal;
+  overflow-wrap: break-word;
+}
+@media (max-width: 700px) {
+  .page-head,
+  .page-head.compact {
+    position: relative;
+    left: auto;
+    top: auto;
+    z-index: 3;
+  }
+}
+
+/* Rotated cover artwork fills the sheet; translucent write-up panels dim it locally. */
+.rotated-background-page { overflow: hidden; isolation: isolate; }
+.rotated-background-page > .sheet { visibility: hidden; }
+.rotated-page-background { position: absolute; inset: 0; z-index: -1; overflow: hidden; }
+.rotated-page-background > svg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 64.7083%;
+  height: 154.5396%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+}
+.rotated-background-page .project-text { background: rgba(255, 255, 255, 0.9); }
+.rotated-background-page .project-page-number { z-index: 3; }
+@media (max-width: 700px) {
+  .rotated-background-page .rotated-page-background > svg {
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%) rotate(-90deg) scale(2);
+  }
+}
+
+/* Landscape project covers with all project text contained in the left panel. */
+.rotated-background-page { aspect-ratio: 16 / 9; }
+.rotated-background-page > .sheet { display: none; }
+.rotated-background-page .page-head.has-text,
+#common-horizons.rotated-background-page .page-head.has-text {
+  position: absolute;
+  left: 4%;
+  top: 6%;
+  width: 46%;
+  max-width: none;
+  padding: 0;
+}
+.rotated-background-page .project-text,
+#common-horizons.rotated-background-page .project-text:empty {
+  margin: 0;
+  min-height: 49.5cqw;
+  padding: 1.6cqw;
+  columns: 1;
+  font-size: 0.84cqw;
+  line-height: 1.4;
+  background: rgba(255,255,255,0.9);
+}
+.rotated-background-page .project-panel-heading { margin-bottom: 1.4cqw; }
+.rotated-background-page .project-panel-heading h2 {
+  font-size: 1.47cqw;
+  line-height: 1.1;
+  margin: 0;
+}
+.rotated-background-page .project-panel-heading > p {
+  font-size: 0.776cqw;
+  line-height: 1.3;
+  margin: 0.5cqw 0 0;
+}
+.rotated-background-page .project-text > p { margin-bottom: 0.65em; }
+.rotated-background-page .rotated-page-background > svg {
+  width: 56.25%;
+  height: 177.7778%;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  filter: contrast(1.12) saturate(1.05);
+}
+.rotated-background-page .rotated-page-background > svg {
+  filter: url(#project-art-clarity) contrast(1.12) saturate(1.05);
+}
+
+.rotated-background-page .project-text { position: relative; padding-bottom: 3cqw; }
+.project-panel-page-number {
+  position: absolute;
+  right: 1.2cqw;
+  bottom: 1.2cqw;
+  font-size: 0.8cqw;
+  line-height: 1;
+  color: #232021;
+}
