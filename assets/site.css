@@ -608,3 +608,61 @@ a:focus-visible > .peek { opacity: 1; visibility: visible; transform: none; }
   height: 100%;
   transform: translate(-50%, -50%);
 }
+
+/* Replace rasterized footer numbers after the inserted project page. */
+.renumbered-page-number {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 6%;
+  height: 3.5%;
+  padding-right: 4.41%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-sizing: content-box;
+  background: white;
+  font-size: 0.8cqw;
+  line-height: 1;
+  color: #232021;
+  z-index: 4;
+}
+
+/* Framed Die Fabel artwork with matching gaps and clear heading space. */
+.die-fabel-gallery {
+  position: absolute;
+  left: 4.41%;
+  right: 4.41%;
+  top: 8.9%;
+  bottom: 5.7%;
+  display: grid;
+  gap: 1.1cqw;
+}
+.graphic-frame {
+  min-width: 0;
+  min-height: 0;
+  margin: 0;
+  border: 1px solid rgba(35,32,33,0.5);
+  padding: 0.5cqw;
+  background: white;
+}
+.graphic-frame img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.gallery-drawings { grid-template-columns: 1fr 1fr; grid-template-rows: repeat(3,1fr); }
+.gallery-drawings .elevation-one { grid-column: 1; grid-row: 1; }
+.gallery-drawings .elevation-two { grid-column: 1; grid-row: 2; }
+.gallery-drawings .elevation-three { grid-column: 1; grid-row: 3; }
+.gallery-drawings .section-drawing { grid-column: 2; grid-row: 1; }
+.gallery-drawings .site-plan { grid-column: 2; grid-row: 2 / 4; }
+.gallery-perspectives { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+@media (max-width:700px) {
+  .gallery-project-page { aspect-ratio: auto; }
+  .die-fabel-gallery { position: relative; inset: auto; margin: 0 16px 28px; gap: 12px; }
+  .gallery-drawings { grid-template-rows: repeat(3,minmax(100px,auto)); }
+  .gallery-perspectives { grid-template-rows: auto auto; }
+  .graphic-frame { padding: 4px; }
+  .gallery-project-page .project-page-number { bottom: 8px; font-size: 10px; }
+}
+.graphic-frame > svg { display: block; width: 100%; height: 100%; }
+
+/* Maximize page 03 drawings inside their unchanged frames, retaining all artwork. */
+#page-05 .graphic-frame { padding: 0.15cqw; }
