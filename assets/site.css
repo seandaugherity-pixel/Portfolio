@@ -601,3 +601,10 @@ a:focus-visible > .peek { opacity: 1; visibility: visible; transform: none; }
   line-height: 1;
   color: #232021;
 }
+
+/* Artboard 14 already matches page 01's landscape format. */
+#common-horizons .rotated-page-background > svg {
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+}
